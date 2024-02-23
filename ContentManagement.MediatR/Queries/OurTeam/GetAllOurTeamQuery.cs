@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 
 namespace ContentManagement.MediatR.Queries
 {
-    public class GetClergyByIdQuery : IRequest<ServiceResponse<ClergyDTO>>
+    public class GetAllOurTeamQuery : IRequest<ServiceResponse<List<OurTeamDTO>>>
     {
-        public int Id { get; set; }
     }
 }

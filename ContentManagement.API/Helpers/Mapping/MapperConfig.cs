@@ -34,7 +34,7 @@ namespace ContentManagement.API.Helpers.Mapping
                 mc.AddProfile(new HacProfile());
                 mc.AddProfile(new AirportProfile());
                 mc.AddProfile(new FrontProfile());
-                mc.AddProfile(new ClergyProfile());
+                mc.AddProfile(new OurTeamProfile());
                 mc.AddProfile(new FoundationPublicationProfile());
                 mc.AddProfile(new MosqueProfile());
                 mc.AddProfile(new NewsProfile());

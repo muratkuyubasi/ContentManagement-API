@@ -16,32 +16,32 @@ using System.Threading.Tasks;
 
 namespace ContentManagement.MediatR.Handlers
 {
-    public class DeleteClergyCommandHandler : IRequestHandler<DeleteClergyCommand, ServiceResponse<ClergyDTO>>
+    public class DeleteOurTeamCommandHandler : IRequestHandler<DeleteOurTeamCommand, ServiceResponse<OurTeamDTO>>
     {
-        private readonly IClergyRepository repo;
+        private readonly IOurTeamRepository repo;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork<PTContext> _uow;
 
-        public DeleteClergyCommandHandler(IClergyRepository clergyRepository, IMapper mapper, IUnitOfWork<PTContext> uow)
+        public DeleteOurTeamCommandHandler(IOurTeamRepository OurTeamRepository, IMapper mapper, IUnitOfWork<PTContext> uow)
         {
-            repo = clergyRepository;
+            repo = OurTeamRepository;
             _mapper = mapper;
             _uow = uow;
         }
 
-        public async Task<ServiceResponse<ClergyDTO>> Handle(DeleteClergyCommand request, CancellationToken cancellationToken)
+        public async Task<ServiceResponse<OurTeamDTO>> Handle(DeleteOurTeamCommand request, CancellationToken cancellationToken)
         {
             var data = await repo.FindBy(x => x.Id == request.Id).FirstOrDefaultAsync();
             if (data == null)
             {
-                return ServiceResponse<ClergyDTO>.Return409("Bu ID'ye ait bir din görevlisi bulunamadı!");
+                return ServiceResponse<OurTeamDTO>.Return409("Bu ID'ye ait bir din görevlisi bulunamadı!");
             }
             repo.Remove(data);
             if (await _uow.SaveAsync()<=0)
             {
-                return ServiceResponse<ClergyDTO>.Return409("Silme işlemi sırasında bir hata meydana geldi!");
+                return ServiceResponse<OurTeamDTO>.Return409("Silme işlemi sırasında bir hata meydana geldi!");
             }
-            else return ServiceResponse<ClergyDTO>.ReturnResultWith200(_mapper.Map<ClergyDTO>(data));
+            else return ServiceResponse<OurTeamDTO>.ReturnResultWith200(_mapper.Map<OurTeamDTO>(data));
         }
     }
 }

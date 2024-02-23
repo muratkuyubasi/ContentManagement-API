@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ContentManagement.Data.Models
+namespace ContentManagement.Data.Dto
 {
-    public class Clergy
+    public class OurTeamDTO
     {
         public int Id { get; set; }
-
         public string Image { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public string JobDescription { get; set; }
-        public string PlaceOfDuty { get; set; }
+        public string Mail { get; set; }
+        public string Title { get; set; }
+        public string Biography { get; set; }
     }
 }

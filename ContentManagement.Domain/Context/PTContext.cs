@@ -60,7 +60,7 @@ namespace ContentManagement.Domain
 
         public virtual DbSet<FoundationPublication> FoundationPublications { get; set; }
 
-        public virtual DbSet<Clergy> Clergies { get; set; }
+        public virtual DbSet<OurTeam> OurTeams { get; set; }
 
         public virtual DbSet<Activity> Activities { get; set; }
         public virtual DbSet<Services> Services { get; set; }

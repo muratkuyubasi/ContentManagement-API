@@ -960,7 +960,7 @@ namespace ContentManagement.Domain.Migrations
                     b.ToTable("Citizenships");
                 });
 
-            modelBuilder.Entity("ContentManagement.Data.Models.Clergy", b =>
+            modelBuilder.Entity("ContentManagement.Data.Models.OurTeam", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

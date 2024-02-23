@@ -17,38 +17,38 @@ using System.Threading.Tasks;
 
 namespace ContentManagement.MediatR.Commands
 {
-    public class UpdateClergyCommandHandler : IRequestHandler<UpdateClergyCommand, ServiceResponse<ClergyDTO>>
+    public class UpdateOurTeamCommandHandler : IRequestHandler<UpdateOurTeamCommand, ServiceResponse<OurTeamDTO>>
     {
-        private readonly IClergyRepository repo;
+        private readonly IOurTeamRepository repo;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork<PTContext> _uow;
 
-        public UpdateClergyCommandHandler(IClergyRepository clergyRepository, IMapper mapper, IUnitOfWork<PTContext> uow)
+        public UpdateOurTeamCommandHandler(IOurTeamRepository OurTeamRepository, IMapper mapper, IUnitOfWork<PTContext> uow)
         {
-            repo = clergyRepository;
+            repo = OurTeamRepository;
             _mapper = mapper;
             _uow = uow;
         }
 
-        public async Task<ServiceResponse<ClergyDTO>> Handle(UpdateClergyCommand request, CancellationToken cancellationToken)
+        public async Task<ServiceResponse<OurTeamDTO>> Handle(UpdateOurTeamCommand request, CancellationToken cancellationToken)
         {
             var model = await repo.FindBy(x => x.Id == request.Id).FirstOrDefaultAsync();
             if (model == null)
             {
-                return ServiceResponse<ClergyDTO>.Return409("Bu ID'ye ait bir din görevlisi bulunmamaktadır!");
+                return ServiceResponse<OurTeamDTO>.Return409("Bu ID'ye ait bir din görevlisi bulunmamaktadır!");
             }
             model.Image = request.Image;
             model.Name = request.Name;
             model.Surname = request.Surname;
-            model.JobDescription = request.JobDescription;
-            model.PlaceOfDuty = request.PlaceOfDuty;
+            model.Mail = request.Mail;
+            model.Title = request.Title;
             repo.Update(model);
             if (await _uow.SaveAsync() <= 0)
             {
-                return ServiceResponse<ClergyDTO>.Return409("Güncelleme işlemi sırasında bir hata oluştu");
+                return ServiceResponse<OurTeamDTO>.Return409("Güncelleme işlemi sırasında bir hata oluştu");
             }
             else
-                return ServiceResponse<ClergyDTO>.ReturnResultWith200(_mapper.Map<ClergyDTO>(model));
+                return ServiceResponse<OurTeamDTO>.ReturnResultWith200(_mapper.Map<OurTeamDTO>(model));
         }
     }
 }

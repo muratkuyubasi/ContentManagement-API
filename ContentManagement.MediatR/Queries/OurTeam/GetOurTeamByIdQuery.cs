@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ContentManagement.MediatR.Commands
+namespace ContentManagement.MediatR.Queries
 {
-    public class DeleteClergyCommand : IRequest<ServiceResponse<ClergyDTO>>
+    public class GetOurTeamByIdQuery : IRequest<ServiceResponse<OurTeamDTO>>
     {
         public int Id { get; set; }
     }

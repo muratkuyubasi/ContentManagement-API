@@ -39,7 +39,7 @@ namespace ContentManagement.API.Helpers
             services.AddScoped<IGenderRepository, GenderRepository>();
             services.AddScoped<IRoomTypeRepository, RoomTypeRepository>();
             services.AddScoped<IAirportRepository, AirportRepository>();
-            services.AddScoped<IClergyRepository, ClergyRepository>();
+            services.AddScoped<IOurTeamRepository, OurTeamRepository>();
             services.AddScoped<IFoundationPublicationRepository, FoundationPublicationRepository>();
             services.AddScoped<IMosqueRepository, MosqueRepository>();
             services.AddScoped<INewsRepository, NewsRepository>();

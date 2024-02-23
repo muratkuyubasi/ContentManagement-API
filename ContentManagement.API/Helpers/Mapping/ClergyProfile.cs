@@ -5,13 +5,13 @@ using ContentManagement.MediatR.Commands;
 
 namespace ContentManagement.API.Helpers.Mapping
 {
-    public class ClergyProfile : Profile
+    public class OurTeamProfile : Profile
     {
-        public ClergyProfile()
+        public OurTeamProfile()
         {
-            CreateMap<Clergy, ClergyDTO>().ReverseMap();
-            CreateMap<AddClergyCommand, Clergy>();
-            CreateMap<UpdateClergyCommand, Clergy>();
+            CreateMap<OurTeam, OurTeamDTO>().ReverseMap();
+            CreateMap<AddOurTeamCommand, OurTeam>();
+            CreateMap<UpdateOurTeamCommand, OurTeam>();
         }
     }
 }

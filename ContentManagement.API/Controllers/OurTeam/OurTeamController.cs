@@ -12,61 +12,61 @@ namespace ContentManagement.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClergyController : BaseController
+    public class OurTeamController : BaseController
     {
         private readonly IMediator _mediator;
 
-        public ClergyController(IMediator mediator)
+        public OurTeamController(IMediator mediator)
         {
             _mediator = mediator;
         }
 
-        ///<summary>Get All Clergies</summary><return></return>
+        ///<summary>Get All OurTeams</summary><return></return>
         [HttpGet("GetAll")]
-        [Produces("application/json", "application/xml", Type = typeof(List<ClergyDTO>))]
+        [Produces("application/json", "application/xml", Type = typeof(List<OurTeamDTO>))]
         public async Task<IActionResult> GetAll()
         {
-            var datas = new GetAllClergiesQuery();
+            var datas = new GetAllOurTeamQuery();
             var result = await _mediator.Send(datas);
             return ReturnFormattedResponse(result);
         }
 
-        ///<summary>Get Clergy By Id</summary><return></return>
+        ///<summary>Get OurTeam By Id</summary><return></return>
         [HttpGet("GetById")]
-        [Produces("application/json", "application/xml", Type = typeof(ClergyDTO))]
+        [Produces("application/json", "application/xml", Type = typeof(OurTeamDTO))]
         public async Task<IActionResult> GetById(int id)
         {
-            var datas = new GetClergyByIdQuery { Id = id };
+            var datas = new GetOurTeamByIdQuery { Id = id };
             var result = await _mediator.Send(datas);
             return ReturnFormattedResponse(result);
         }
 
-        ///<summary>Add Clergy</summary><return></return>
+        ///<summary>Add OurTeam</summary><return></return>
         [HttpPost("Add")]
-        [Produces("application/json", "application/xml", Type = typeof(ClergyDTO))]
+        [Produces("application/json", "application/xml", Type = typeof(OurTeamDTO))]
         [Authorize]
-        public async Task<IActionResult> Add(AddClergyCommand addClergyCommand)
+        public async Task<IActionResult> Add(AddOurTeamCommand addOurTeamCommand)
         {
-            var result = await _mediator.Send(addClergyCommand);
+            var result = await _mediator.Send(addOurTeamCommand);
             return ReturnFormattedResponse(result);
         }
 
-        ///<summary>Update Clergy</summary><return></return>
+        ///<summary>Update OurTeam</summary><return></return>
         [HttpPut("Update")]
-        [Produces("application/json", "application/xml", Type = typeof(ClergyDTO))]
+        [Produces("application/json", "application/xml", Type = typeof(OurTeamDTO))]
         [Authorize]
-        public async Task<IActionResult> Update(UpdateClergyCommand updateClergyCommand)
+        public async Task<IActionResult> Update(UpdateOurTeamCommand updateOurTeamCommand)
         {
-            var result = await _mediator.Send(updateClergyCommand);
+            var result = await _mediator.Send(updateOurTeamCommand);
             return ReturnFormattedResponse(result);
         }
 
-        ///<summary>Delete Clergy</summary><return></return>
+        ///<summary>Delete OurTeam</summary><return></return>
         [HttpDelete("Delete")]
         [Authorize]
         public async Task<IActionResult> Delete(int id)
         {
-            var data = new DeleteClergyCommand { Id = id };
+            var data = new DeleteOurTeamCommand { Id = id };
             var result = await _mediator.Send(data);
             return Ok(result);
         }

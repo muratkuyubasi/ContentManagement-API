@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ContentManagement.Repository
 {
-    public interface IClergyRepository : IGenericRepository<Clergy>
+    public interface IOurTeamRepository : IGenericRepository<OurTeam>
     {
     }
 }

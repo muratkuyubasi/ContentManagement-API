@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace ContentManagement.Repository
 {
-    public class ClergyRepository : GenericRepository<Clergy, PTContext>, IClergyRepository
+    public class OurTeamRepository : GenericRepository<OurTeam, PTContext>, IOurTeamRepository
     {
-        public ClergyRepository(
+        public OurTeamRepository(
            IUnitOfWork<PTContext> uow
            ) : base(uow)
         {
